@@ -3,7 +3,6 @@ package com.claytonmuhoza;
 import com.claytonmuhoza.profile.Profile;
 import com.claytonmuhoza.profile.ProfileName;
 import com.claytonmuhoza.profile.ProfileStd;
-import com.claytonmuhoza.profile.xml.ProfileWriterXML;
 import com.claytonmuhoza.syncPath.LocalSyncPath;
 import com.claytonmuhoza.syncPath.SyncPath;
 
@@ -17,7 +16,7 @@ public class Main {
 
             Profile p = new ProfileStd(new ProfileName("profil1"), src, tgt);
 
-            ProfileWriterXML.write(p);
+
         }
         catch (Exception e) {
             System.out.println("Erreur:" + e.getMessage());

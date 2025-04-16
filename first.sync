@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE profile SYSTEM "sync-profile.dtd">
+<profile name="first">
+    <source>/home/clayton/sync/abana</source>
+    <target>/home/clayton/sync/abantu</target>
+</profile>

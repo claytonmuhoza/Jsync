@@ -1,9 +1,12 @@
 package com.claytonmuhoza.programs;
 
+import com.claytonmuhoza.SyncPathFactory.LocalSyncPathFactory;
+import com.claytonmuhoza.SyncPathFactory.SyncPathFactoryImpl;
 import com.claytonmuhoza.profile.Profile;
 import com.claytonmuhoza.profile.ProfileName;
+import com.claytonmuhoza.profile.ProfilePersistence;
 import com.claytonmuhoza.profile.ProfileStd;
-import com.claytonmuhoza.profile.xml.ProfileWriterXML;
+import com.claytonmuhoza.profile.xml.XmlProfilePersistence;
 import com.claytonmuhoza.syncPath.LocalSyncPath;
 import com.claytonmuhoza.syncPath.SyncPath;
 
@@ -20,12 +23,13 @@ public class NewProfile {
                 ProfileName profileName = new ProfileName(profileNameInput);
                 System.out.println("Veuillez le chemin du premier dossier:");
                 String sourcePathInput = scanner.nextLine();
-                SyncPath src = new LocalSyncPath(sourcePathInput);
+                SyncPath src = new LocalSyncPathFactory().create(sourcePathInput);
                 System.out.println("Veuillez le chemin du second dossier:");
                 String targetPathInput = scanner.nextLine();
                 SyncPath tgt = new LocalSyncPath(targetPathInput);
                 Profile p = new ProfileStd(profileName, src, tgt);
-                ProfileWriterXML.write(p);
+                ProfilePersistence storeProfile = new XmlProfilePersistence();
+                storeProfile.save(p);
                 isSaved = true;
             }
             catch (Exception e) {
