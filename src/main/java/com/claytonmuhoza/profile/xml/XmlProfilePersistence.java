@@ -39,6 +39,7 @@ public class XmlProfilePersistence implements ProfilePersistence {
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 
         transformer.transform(new DOMSource(doc), new StreamResult(file));
+        System.out.println("Profile sauvegardé dans " + file.getAbsolutePath());
     }
 
     @Override
