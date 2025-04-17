@@ -24,14 +24,13 @@ public class ProfileReader {
 
         Element root = doc.getDocumentElement();
         String name = root.getAttribute("name");
-        builder.setProfileName(name);
 
         String sourcePath = doc.getElementsByTagName("source").item(0).getTextContent().trim();
         String targetPath = doc.getElementsByTagName("target").item(0).getTextContent().trim();
 
-        builder.setSourcePath(new LocalSyncPath(sourcePath));
-        builder.setTargetPath(new LocalSyncPath(targetPath));
-
-        return builder.build();
+        return builder
+                .setProfileName(name)
+                .setPathA(new LocalSyncPath(sourcePath))
+                .setPathB(new LocalSyncPath(targetPath)).build();
     }
 }

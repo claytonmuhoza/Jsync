@@ -6,7 +6,6 @@ import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -26,11 +25,11 @@ public class XmlProfilePersistence implements ProfilePersistence {
         doc.appendChild(root);
 
         Element source = doc.createElement("source");
-        source.setTextContent(profile.getSourcePath().toString());
+        source.setTextContent(profile.getPathA().toString());
         root.appendChild(source);
 
         Element target = doc.createElement("target");
-        target.setTextContent(profile.getTargetPath().toString());
+        target.setTextContent(profile.getPathB().toString());
         root.appendChild(target);
 
         TransformerFactory tf = TransformerFactory.newInstance();

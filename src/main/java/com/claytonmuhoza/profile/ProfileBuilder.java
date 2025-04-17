@@ -4,9 +4,9 @@ import com.claytonmuhoza.registry.Register;
 import com.claytonmuhoza.syncPath.SyncPath;
 
 public interface ProfileBuilder {
-    void setProfileName(String name);
-    void setSourcePath(SyncPath source);
-    void setTargetPath(SyncPath target);
-    void setRegistrer(Register register);
+    ProfileBuilder setProfileName(String name);
+    ProfileBuilder setPathA(SyncPath source);
+    ProfileBuilder setPathB(SyncPath target);
+    ProfileBuilder setRegistrer(Register register);
     Profile build();
 }

@@ -10,28 +10,35 @@ public class ProfileBuilderStd implements ProfileBuilder {
     private ProfileName name;
     private SyncPath source;
     private SyncPath target;
-    private Register register;
+    private Register register = Register.getInstance();
 
     @Override
-    public void setProfileName(String name) {
-        this.name = new ProfileName(name);
+    public ProfileBuilder setProfileName(ProfileName name) {
+        this.name = name;
+        return this;
     }
 
     @Override
-    public void setSourcePath(SyncPath source) {
+    public ProfileBuilder setPathA(SyncPath source)
+    {
         this.source = source;
+        return this;
     }
 
     @Override
-    public void setTargetPath(SyncPath target) {
+    public ProfileBuilder setPathB(SyncPath target) {
         this.target = target;
+        return this;
     }
 
     @Override
-    public void setRegistrer(Register register){this.register = register; }
+    public ProfileBuilder setRegistrer(Register register){
+        this.register = register;
+        return this;
+    }
 
     @Override
     public Profile build() {
-        return new ProfileStd(name, source, target);
+        return new ProfileStd(name, source, target, register);
     }
 }

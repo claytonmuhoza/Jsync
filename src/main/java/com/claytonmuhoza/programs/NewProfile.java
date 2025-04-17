@@ -1,12 +1,9 @@
 package com.claytonmuhoza.programs;
 
 import com.claytonmuhoza.SyncPathFactory.LocalSyncPathFactory;
-import com.claytonmuhoza.SyncPathFactory.SyncPathFactoryImpl;
-import com.claytonmuhoza.profile.Profile;
-import com.claytonmuhoza.profile.ProfileName;
-import com.claytonmuhoza.profile.ProfilePersistence;
-import com.claytonmuhoza.profile.ProfileStd;
+import com.claytonmuhoza.profile.*;
 import com.claytonmuhoza.profile.xml.XmlProfilePersistence;
+import com.claytonmuhoza.registry.Register;
 import com.claytonmuhoza.syncPath.LocalSyncPath;
 import com.claytonmuhoza.syncPath.SyncPath;
 
@@ -23,13 +20,13 @@ public class NewProfile {
                 ProfileName profileName = new ProfileName(profileNameInput);
                 System.out.println("Veuillez le chemin du premier dossier:");
                 String sourcePathInput = scanner.nextLine();
-                SyncPath src = new LocalSyncPathFactory().create(sourcePathInput);
+                SyncPath pathA = new LocalSyncPathFactory().create(sourcePathInput);
                 System.out.println("Veuillez le chemin du second dossier:");
                 String targetPathInput = scanner.nextLine();
-                SyncPath tgt = new LocalSyncPath(targetPathInput);
-                Profile p = new ProfileStd(profileName, src, tgt);
+                SyncPath pathB = new LocalSyncPath(targetPathInput);
+                Profile profile = new ProfileBuilderStd().setProfileName(profileName).setPathA(pathA).setPathB(pathB).build();
                 ProfilePersistence storeProfile = new XmlProfilePersistence();
-                storeProfile.save(p);
+                storeProfile.save(profile);
                 isSaved = true;
             }
             catch (Exception e) {

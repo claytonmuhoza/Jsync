@@ -1,15 +1,18 @@
 package com.claytonmuhoza.profile;
 
+import com.claytonmuhoza.registry.Register;
 import com.claytonmuhoza.syncPath.SyncPath;
 
 public class ProfileStd implements Profile {
     private final SyncPath sourcePath;
     private final SyncPath targetPath;
     private final ProfileName profileName;
-    public ProfileStd( ProfileName profileName, SyncPath sourcePath, SyncPath targetPath) {
+    private final Register register;
+    public ProfileStd( ProfileName profileName, SyncPath sourcePath, SyncPath targetPath, Register register ) {
         this.sourcePath = sourcePath;
         this.targetPath = targetPath;
         this.profileName = profileName;
+        this.register = register;
     }
     @Override
     public ProfileName getProfileName() {
@@ -17,12 +20,17 @@ public class ProfileStd implements Profile {
     }
 
     @Override
-    public SyncPath getSourcePath() {
+    public SyncPath getPathA() {
         return sourcePath;
     }
 
     @Override
-    public SyncPath getTargetPath() {
+    public SyncPath getPathB() {
         return targetPath;
+    }
+
+    @Override
+    public Register getRegister() {
+        return this.register;
     }
 }
