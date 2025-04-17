@@ -10,6 +10,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.util.Map;
 
 public class XmlProfilePersistence implements ProfilePersistence {
 
@@ -31,6 +32,20 @@ public class XmlProfilePersistence implements ProfilePersistence {
         Element target = doc.createElement("target");
         target.setTextContent(profile.getPathB().toString());
         root.appendChild(target);
+
+        //register
+        // <registry>
+        Map<String, Long> entries = profile.getRegister().getAll();
+        if (!entries.isEmpty()) {
+            Element registryElem = doc.createElement("registry");
+            for (Map.Entry<String, Long> entry : entries.entrySet()) {
+                Element entryElem = doc.createElement("entry");
+                entryElem.setAttribute("path", entry.getKey());
+                entryElem.setAttribute("timestamp", entry.getValue().toString());
+                registryElem.appendChild(entryElem);
+            }
+            profileElem.appendChild(registryElem);
+        }
 
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();

@@ -1,33 +1,16 @@
 package com.claytonmuhoza.registry;
 
 import java.util.*;
-import java.util.HashMap;
-import java.util.Map;
 
-public class Register {
-    private static Register instance;
-    private final Map<String, Long> fileTimestamps;
+public interface Register {
+    public void update(String path, long timestamp);
 
-    private Register() {
-        this.fileTimestamps = new HashMap<>();
-    }
+    public Entry getEntry(String path);
 
-    public static synchronized Register getInstance() {
-        if (instance == null) {
-            instance = new Register();
-        }
-        return instance;
-    }
+    public Collection<Entry> getAllEntries();
 
-    public void update(String relativePath, long timestamp) {
-        fileTimestamps.put(relativePath, timestamp);
-    }
+    public boolean contains(String path);
 
-    public Long getTimestamp(String relativePath) {
-        return fileTimestamps.get(relativePath);
-    }
-
-    public Map<String, Long> getAll() {
-        return fileTimestamps;
-    }
+    public void remove(String path);
 }
+
