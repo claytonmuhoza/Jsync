@@ -2,6 +2,7 @@ package com.claytonmuhoza.profile.xml;
 
 import com.claytonmuhoza.profile.Profile;
 import com.claytonmuhoza.profile.ProfileBuilder;
+import com.claytonmuhoza.profile.ProfileName;
 import com.claytonmuhoza.syncPath.LocalSyncPath;
 import org.w3c.dom.*;
 
@@ -29,7 +30,7 @@ public class ProfileReader {
         String targetPath = doc.getElementsByTagName("target").item(0).getTextContent().trim();
 
         return builder
-                .setProfileName(name)
+                .setProfileName(new ProfileName(name))
                 .setPathA(new LocalSyncPath(sourcePath))
                 .setPathB(new LocalSyncPath(targetPath)).build();
     }

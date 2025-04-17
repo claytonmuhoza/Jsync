@@ -1,6 +1,7 @@
 package com.claytonmuhoza.profile;
 
 import com.claytonmuhoza.registry.Register;
+import com.claytonmuhoza.registry.RegisterStd;
 import com.claytonmuhoza.syncPath.SyncPath;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ public class ProfileBuilderStd implements ProfileBuilder {
     private ProfileName name;
     private SyncPath source;
     private SyncPath target;
-    private Register register = Register.getInstance();
+    private Register register = new RegisterStd();
 
     @Override
     public ProfileBuilder setProfileName(ProfileName name) {
