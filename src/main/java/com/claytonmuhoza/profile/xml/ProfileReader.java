@@ -3,7 +3,6 @@ package com.claytonmuhoza.profile.xml;
 import com.claytonmuhoza.profile.Profile;
 import com.claytonmuhoza.profile.ProfileBuilder;
 import com.claytonmuhoza.syncPath.LocalSyncPath;
-import com.claytonmuhoza.syncPath.SyncPath;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -25,13 +24,13 @@ public class ProfileReader {
 
         Element root = doc.getDocumentElement();
         String name = root.getAttribute("name");
-        builder.startProfile(name);
+        builder.setProfileName(name);
 
         String sourcePath = doc.getElementsByTagName("source").item(0).getTextContent().trim();
         String targetPath = doc.getElementsByTagName("target").item(0).getTextContent().trim();
 
-        builder.setSource(new LocalSyncPath(sourcePath));
-        builder.setTarget(new LocalSyncPath(targetPath));
+        builder.setSourcePath(new LocalSyncPath(sourcePath));
+        builder.setTargetPath(new LocalSyncPath(targetPath));
 
         return builder.build();
     }

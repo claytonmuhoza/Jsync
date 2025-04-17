@@ -11,17 +11,17 @@ public class ProfileBuilderStd implements ProfileBuilder {
     private SyncPath target;
 
     @Override
-    public void startProfile(String name) {
+    public void setProfileName(String name) {
         this.name = new ProfileName(name);
     }
 
     @Override
-    public void setSource(SyncPath source) {
+    public void setSourcePath(SyncPath source) {
         this.source = source;
     }
 
     @Override
-    public void setTarget(SyncPath target) {
+    public void setTargetPath(SyncPath target) {
         this.target = target;
     }
 
