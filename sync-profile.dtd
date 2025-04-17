@@ -1,0 +1,7 @@
+<!ELEMENT profile (source, target, registry?)>
+<!ATTLIST profile name CDATA #REQUIRED>
+<!ELEMENT source (#PCDATA)>
+<!ELEMENT target (#PCDATA)>
+<!ELEMENT registry (entry*)>
+<!ELEMENT entry EMPTY>
+<!ATTLIST entry path CDATA #REQUIRED timestamp CDATA #REQUIRED>

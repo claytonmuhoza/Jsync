@@ -1,5 +1,6 @@
 package com.claytonmuhoza.profile;
 
+import com.claytonmuhoza.registry.Registry;
 import com.claytonmuhoza.syncPath.SyncPath;
 
 public interface Profile {
