@@ -1,4 +1,4 @@
-package com.claytonmuhoza.registry;
+package com.claytonmuhoza.registrer;
 
 import java.util.*;
 
@@ -15,6 +15,9 @@ public class RegisterStd implements Register {
 
     public Collection<Entry> getAllEntries() {
         return entries.values();
+    }
+    public List<String> getAllPaths() {
+        return new ArrayList<>(entries.keySet());
     }
 
     public boolean contains(String path) {

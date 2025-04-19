@@ -1,5 +1,7 @@
 package com.claytonmuhoza.syncPath;
 
+import com.claytonmuhoza.syncPath.access.PathAccessor;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -49,6 +51,11 @@ public class WebDavSyncPath implements SyncPath {
     @Override
     public String toString() {
         return url;
+    }
+
+    @Override
+    public PathAccessor getAccessor() {
+        return null;
     }
 }
 

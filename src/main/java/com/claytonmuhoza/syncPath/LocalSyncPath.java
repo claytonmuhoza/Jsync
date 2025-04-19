@@ -1,12 +1,15 @@
 package com.claytonmuhoza.syncPath;
 
+import com.claytonmuhoza.syncPath.access.LocalPathAccessor;
+import com.claytonmuhoza.syncPath.access.PathAccessor;
+
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Paths;
 
 public class LocalSyncPath implements SyncPath {
     private String path;
-
+    private final PathAccessor accessor;
     public LocalSyncPath(String path) {
         if (path == null || path.isBlank()) {
             throw new IllegalArgumentException("Le chemin ne peut pas être vide.");
@@ -23,6 +26,7 @@ public class LocalSyncPath implements SyncPath {
         {
             throw new IllegalArgumentException("le dossier n'existe pas dans le chemin: " + path);
         }
+        this.accessor = new LocalPathAccessor(Paths.get(this.path));
     }
 
     public SyncPath getPath() {
@@ -34,9 +38,13 @@ public class LocalSyncPath implements SyncPath {
         return path;
     }
 
-    // Pour savoir si le dossier existe réellement sur le système de fichiers
     public boolean exists() {
         return Files.isDirectory(Paths.get(path));
     }
+    @Override
+    public PathAccessor getAccessor() {
+        return accessor;
+    }
+
 }
 

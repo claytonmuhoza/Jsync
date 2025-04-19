@@ -3,4 +3,11 @@
 <profile name="first">
     <source>/home/clayton/sync/abana</source>
     <target>/home/clayton/sync/abantu</target>
+    <registry>
+        <entry path="dedj.txt" timestamp="1745065174984"/>
+        <entry path="jifjrf/doode" timestamp="1745064972241"/>
+        <entry path="jifjrf/dedeo.html" timestamp="1745064984830"/>
+        <entry path="ok.js" timestamp="1745059725308"/>
+        <entry path="co" timestamp="1745059712322"/>
+    </registry>
 </profile>

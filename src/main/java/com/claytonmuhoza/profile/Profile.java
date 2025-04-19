@@ -1,6 +1,6 @@
 package com.claytonmuhoza.profile;
 
-import com.claytonmuhoza.registry.Register;
+import com.claytonmuhoza.registrer.Register;
 import com.claytonmuhoza.syncPath.SyncPath;
 
 public interface Profile {
@@ -8,4 +8,5 @@ public interface Profile {
     public SyncPath getPathA();
     public SyncPath getPathB();
     public Register getRegister();
+
 }

@@ -1,4 +1,4 @@
-package com.claytonmuhoza.registry;
+package com.claytonmuhoza.registrer;
 
 public class EntryStd implements Entry {
     private final String path;

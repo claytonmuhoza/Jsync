@@ -1,12 +1,14 @@
 package com.claytonmuhoza.programs;
 
-import com.claytonmuhoza.SyncPathFactory.LocalSyncPathFactory;
+import com.claytonmuhoza.PathFactory.LocalSyncPathFactory;
 import com.claytonmuhoza.profile.*;
 import com.claytonmuhoza.profile.xml.XmlProfilePersistence;
-import com.claytonmuhoza.registry.Register;
+import com.claytonmuhoza.registrer.Entry;
+import com.claytonmuhoza.registrer.Register;
 import com.claytonmuhoza.syncPath.LocalSyncPath;
 import com.claytonmuhoza.syncPath.SyncPath;
 
+import java.util.Collection;
 import java.util.Scanner;
 
 public class NewProfile {
@@ -20,11 +22,13 @@ public class NewProfile {
                 ProfileName profileName = new ProfileName(profileNameInput);
                 System.out.println("Veuillez le chemin du premier dossier:");
                 String sourcePathInput = scanner.nextLine();
-                SyncPath pathA = new LocalSyncPathFactory().create(sourcePathInput);
+                SyncPath syncPathA = new LocalSyncPathFactory().create(sourcePathInput);
                 System.out.println("Veuillez le chemin du second dossier:");
                 String targetPathInput = scanner.nextLine();
-                SyncPath pathB = new LocalSyncPath(targetPathInput);
-                Profile profile = new ProfileBuilderStd().setProfileName(profileName).setPathA(pathA).setPathB(pathB).build();
+                SyncPath syncPathB = new LocalSyncPath(targetPathInput);
+                Profile profile = new ProfileBuilderStd().setProfileName(profileName).setPathA(syncPathA).setPathB(syncPathB).build();
+                Register register = profile.getRegister();
+                register.update("dedj.txt",  12);
                 ProfilePersistence storeProfile = new XmlProfilePersistence();
                 storeProfile.save(profile);
                 isSaved = true;

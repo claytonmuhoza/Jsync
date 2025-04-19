@@ -1,4 +1,4 @@
-package com.claytonmuhoza.registry;
+package com.claytonmuhoza.registrer;
 
 public interface Entry {
     public String getPath();

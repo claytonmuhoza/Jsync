@@ -1,11 +1,8 @@
 package com.claytonmuhoza.profile;
 
-import com.claytonmuhoza.registry.Register;
-import com.claytonmuhoza.registry.RegisterStd;
+import com.claytonmuhoza.registrer.Register;
+import com.claytonmuhoza.registrer.RegisterStd;
 import com.claytonmuhoza.syncPath.SyncPath;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ProfileBuilderStd implements ProfileBuilder {
     private ProfileName name;

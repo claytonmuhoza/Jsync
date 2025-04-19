@@ -2,6 +2,7 @@ package com.claytonmuhoza.profile.xml;
 
 import com.claytonmuhoza.profile.*;
 import com.claytonmuhoza.profile.util.ProfileFileUtils;
+import com.claytonmuhoza.registrer.Entry;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -10,7 +11,6 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.util.Map;
 
 public class XmlProfilePersistence implements ProfilePersistence {
 
@@ -33,18 +33,19 @@ public class XmlProfilePersistence implements ProfilePersistence {
         target.setTextContent(profile.getPathB().toString());
         root.appendChild(target);
 
-        //register
-        // <registry>
-        Map<String, Long> entries = profile.getRegister().getAll();
-        if (!entries.isEmpty()) {
+
+        // ✅ Ajouter le registre seulement s’il n’est pas vide
+        if (!profile.getRegister().getAllEntries().isEmpty()) {
             Element registryElem = doc.createElement("registry");
-            for (Map.Entry<String, Long> entry : entries.entrySet()) {
+
+            for (Entry entry : profile.getRegister().getAllEntries()) {
                 Element entryElem = doc.createElement("entry");
-                entryElem.setAttribute("path", entry.getKey());
-                entryElem.setAttribute("timestamp", entry.getValue().toString());
+                entryElem.setAttribute("path", entry.getPath());
+                entryElem.setAttribute("timestamp", String.valueOf(entry.getTimestamp()));
                 registryElem.appendChild(entryElem);
             }
-            profileElem.appendChild(registryElem);
+
+            root.appendChild(registryElem); // ✅ ajout au DOM ici
         }
 
         TransformerFactory tf = TransformerFactory.newInstance();

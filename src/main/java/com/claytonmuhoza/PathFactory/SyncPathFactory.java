@@ -1,4 +1,4 @@
-package com.claytonmuhoza.SyncPathFactory;
+package com.claytonmuhoza.PathFactory;
 
 import com.claytonmuhoza.syncPath.SyncPath;
 

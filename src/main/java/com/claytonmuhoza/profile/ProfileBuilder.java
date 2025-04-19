@@ -1,6 +1,6 @@
 package com.claytonmuhoza.profile;
 
-import com.claytonmuhoza.registry.Register;
+import com.claytonmuhoza.registrer.Register;
 import com.claytonmuhoza.syncPath.SyncPath;
 
 public interface ProfileBuilder {

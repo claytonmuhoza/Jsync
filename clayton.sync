@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE profile SYSTEM "sync-profile.dtd">
+<profile name="clayton">
+    <source>/home/clayton/sync/abana</source>
+    <target>/home/clayton/sync/abantu</target>
+    <registry>
+        <entry path="dedj.txt" timestamp="12"/>
+    </registry>
+</profile>
